@@ -38,13 +38,13 @@ email_credential_location <- "/SharedDrive/deans/Presidents/HSPI-PM/Operations A
 
 ```{r email sending list, echo=FALSE}
 
-cc_list <- c("soyoun.kweon@mssm.edu",
-             "leonarda.parente@mountsinai.org"
+cc_list <- c("soyoun.kweon@mssm.edu"
+             # "leonarda.parente@mountsinai.org"
              )
-send_list <- c("soyoun.kweon@mssm.edu",
-               "adrin.mammen@mountsinai.org",
-               "marcy.cohen@mountsinai.org",
-               "matthew.shore@mountsinai.org"
+send_list <- c("soyoun.kweon@mssm.edu"
+               # "adrin.mammen@mountsinai.org",
+               # "marcy.cohen@mountsinai.org",
+               # "matthew.shore@mountsinai.org"
                )
 
 email_subject <- glue("Access Workstream Metrics & Impact {sending_date}")
