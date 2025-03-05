@@ -1,0 +1,14 @@
+---
+title: "Email Document"
+output: blastula::blastula_email
+---
+
+
+<p style="font-size:14pt; font-weight:bold">Access Workstream Metrics & Impact report has been updated.</p> 
+
+Updated Access Workstream Metrics & Impact Report can be found [here](https://hso-rconnect.mssm.edu/content/a70cf28e-0d05-4c4c-bc9f-f54f6ea0f309).
+
+Latest Late-releasing Block Report can be found [here](https://hso-rconnect.mssm.edu/late-releasing-blocks/).
+
+Latest Unassigned Referrals Report can be found [here](https://hso-rconnect.mssm.edu/unassigned-report/).
+ 

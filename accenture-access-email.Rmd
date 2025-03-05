@@ -1,0 +1,83 @@
+---
+title: "system-huddle-email"
+output: html_document
+---
+
+
+```{r setup, include=FALSE}
+
+library(blastula)
+library(rmarkdown)
+library(here)
+library(glue)
+library(lubridate)
+```
+
+
+```{r processing, include = FALSE}
+
+# source("Scripts/pull_and_process_monthly.R", local = knitr::knit_global())
+```
+
+
+```{r set up, echo=FALSE}
+
+sending_date <-
+  paste0(
+    format(Sys.Date() %m+% days(1), "%B "),
+    format(Sys.Date() %m+% days(1), "%d") %>% as.numeric(),
+    ", ",
+    format(Sys.Date() %m+% days(1), "%Y")
+  )
+
+
+email_credential_location <- "/SharedDrive/deans/Presidents/HSPI-PM/Operations Analytics and Optimization/Administrative/Workgroups/R Workbench/Working Area/Data Connections/email_creds"
+
+```
+
+
+```{r email sending list, echo=FALSE}
+
+cc_list <- c("soyoun.kweon@mssm.edu",
+             "leonarda.parente@mountsinai.org"
+             )
+send_list <- c("soyoun.kweon@mssm.edu",
+               "adrin.mammen@mountsinai.org",
+               "marcy.cohen@mountsinai.org",
+               "matthew.shore@mountsinai.org"
+               )
+
+email_subject <- glue("Access Workstream Metrics & Impact {sending_date}")
+
+sinai_logo <- add_image(file = "www/Mount_Sinai_Logo_H.png",
+                        width = 300)
+
+# Generate the footer text
+footer_text <- glue("Access Workstream Metrics & Impact {sending_date}.")
+
+```
+
+
+```{r email details, echo=FALSE}
+
+##Use blastula to construct email to send
+compose_email(header = sinai_logo,
+              body = render_email("Scripts/email_body.Rmd")$html_html,
+              footer = footer_text) %>%
+  # add_attachment(
+    # file = "/nfs/data/Applications/Ambulatory/system_huddle_report.html",
+    # filename = paste0("System Huddle Report_2022_2023",".html")) %>%
+    # file = "/nfs/data/Applications/Ambulatory/system_huddle_report.html",
+    # filename = paste0("System Huddle Report_",format(Sys.Date()+1, "%m%d%y"),".html")) %>%
+  purrr::list_modify(html_str =
+                       .$html_str %>%
+                       stringr::str_replace_all(pattern = "(?i)#f6f6f6",
+                                                replacement = "#FFFFFF")) %>%
+  smtp_send(
+    from = "soyoun.kweon@mssm.edu",
+    to = send_list,
+    cc = cc_list,
+    credentials = creds_file(file = email_credential_location),
+    subject = email_subject
+  ) 
+```
