@@ -58,6 +58,7 @@ sinai_logo <- add_image(file = "www/Mount_Sinai_Logo_H.png",
 # Generate the footer text
 footer_text <- glue("Access Workstream Metrics & Impact {sending_date}.")
 
+
 ```
 
 
