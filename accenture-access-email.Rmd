@@ -47,7 +47,9 @@ send_list <- c("soyoun.kweon@mssm.edu",
                "matthew.shore@mountsinai.org",
                "elvis.deleon@mountsinai.org",
                "charles.psarreas@mountsinai.org",
-               "anne.dickerson@mountsinai.org"
+               "anne.dickerson@mountsinai.org",
+               "olivia.vangundy@mountsinai.org",
+               "lauren.lipschutz@mountsinai.org"
                )
 
 email_subject <- glue("Access Workstream Metrics & Impact {sending_date}")
